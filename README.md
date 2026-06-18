@@ -1,20 +1,58 @@
 # 2FAuth 账号邮箱登录版
 
-这是基于 `2fauth/2fauth:5.4.3` 做的登录增强版。  
-主要解决原版登录框只能按邮箱格式输入的问题，让它可以同时支持账号和邮箱登录。
+基于 `2fauth/2fauth:5.4.3` 定制，主要解决原版登录框只能按邮箱格式输入的问题。  
+本版本支持账号和邮箱同时登录，适合自己部署使用。
 
-> 这是非官方定制版，适合自己部署使用。
+## 一键安装
 
-## 功能说明
+服务器已安装 Docker 的情况下，直接执行：
+
+```bash
+git clone https://github.com/w87051809/2fauth.git
+cd 2fauth
+bash install.sh
+```
+
+安装完成后，脚本会显示访问地址。
+
+## 指定域名安装
+
+```bash
+git clone https://github.com/w87051809/2fauth.git
+cd 2fauth
+APP_URL="https://你的域名" HOST_PORT=8002 bash install.sh
+```
+
+## 指定 IP 安装
+
+```bash
+git clone https://github.com/w87051809/2fauth.git
+cd 2fauth
+APP_URL="http://服务器IP:8002" HOST_PORT=8002 bash install.sh
+```
+
+## 默认配置
+
+| 项目 | 默认值 |
+| --- | --- |
+| 容器名 | `2fauth` |
+| 镜像名 | `2fauth-xiaopacai:5.4.3-login` |
+| 数据目录 | `/DATA/AppData/2fauth` |
+| 宿主机端口 | `8002` |
+
+## 改了什么
 
 - 支持账号登录。
 - 支持邮箱登录。
 - 输入账号时显示 `账号登录`。
 - 输入邮箱时显示 `邮箱登录`。
 - 登录框不再强制邮箱格式。
+- 输入普通账号不会再提示必须包含 `@`。
+- 后端自动判断登录方式，不需要用户手动切换。
 - 注册功能不乱改，仍然是账号、邮箱、密码。
-- Docker 一键安装。
-- 支持 Nginx / 宝塔反代。
+- 修复 IP 访问时反代替换 JS 导致白屏的问题。
+- 提供 Docker 一键安装脚本。
+- 提供 Docker Compose 和 Nginx / 宝塔反代示例。
 
 ## 登录规则
 
@@ -26,37 +64,6 @@
 | `user@qq.com` | 邮箱登录 |
 
 用户不需要手动切换。
-
-## 一键安装
-
-服务器已经安装 Docker 的情况下，在项目目录执行：
-
-```bash
-bash install.sh
-```
-
-默认配置：
-
-| 项目 | 默认值 |
-| --- | --- |
-| 容器名 | `2fauth` |
-| 镜像名 | `2fauth-xiaopacai:5.4.3-login` |
-| 数据目录 | `/DATA/AppData/2fauth` |
-| 宿主机端口 | `8002` |
-
-安装完成后，脚本会显示访问地址。
-
-## 指定域名安装
-
-```bash
-APP_URL="https://你的域名" HOST_PORT=8002 bash install.sh
-```
-
-## 指定 IP 安装
-
-```bash
-APP_URL="http://服务器IP:8002" HOST_PORT=8002 bash install.sh
-```
 
 ## 手动构建
 
