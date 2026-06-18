@@ -1,0 +1,16 @@
+settings.env
+.env
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+*.bak
+*.pem
+*.key
+*.crt
+*.zip
+node_modules/
+vendor/
+storage/
+release/
+

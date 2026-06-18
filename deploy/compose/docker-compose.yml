@@ -1,0 +1,20 @@
+services:
+  2fauth:
+    image: 2fauth-xiaopacai:5.4.3-login
+    container_name: 2fauth
+    restart: always
+    ports:
+      - "8002:8000"
+    env_file:
+      - settings.env
+    environment:
+      APP_URL: "https://你的域名"
+      ASSET_URL: "https://你的域名"
+      TRUSTED_PROXIES: "*"
+      APP_ENV: "production"
+      APP_TIMEZONE: "Asia/Shanghai"
+      DB_CONNECTION: "sqlite"
+      DB_DATABASE: "/srv/database/database.sqlite"
+    volumes:
+      - /DATA/AppData/2fauth:/2fauth
+
