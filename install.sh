@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-IMAGE_NAME="${IMAGE_NAME:-2fauth-xiaopacai:5.4.3-login}"
+IMAGE_NAME="${IMAGE_NAME:-2fauth-account-login:5.4.3}"
 CONTAINER_NAME="${CONTAINER_NAME:-2fauth}"
 HOST_PORT="${HOST_PORT:-8002}"
 DATA_DIR="${DATA_DIR:-/DATA/AppData/2fauth}"

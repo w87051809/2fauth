@@ -1,6 +1,6 @@
 services:
   2fauth:
-    image: 2fauth-xiaopacai:5.4.3-login
+    image: 2fauth-account-login:5.4.3
     container_name: 2fauth
     restart: always
     ports:

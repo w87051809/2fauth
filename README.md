@@ -44,7 +44,7 @@ APP_URL="http://服务器IP:8002" HOST_PORT=8002 bash install.sh
 | 项目 | 默认值 |
 | --- | --- |
 | 容器名 | `2fauth` |
-| 镜像名 | `2fauth-xiaopacai:5.4.3-login` |
+| 镜像名 | `2fauth-account-login:5.4.3` |
 | 数据目录 | `/DATA/AppData/2fauth` |
 | 宿主机端口 | `8002` |
 
@@ -54,15 +54,15 @@ APP_URL="http://服务器IP:8002" HOST_PORT=8002 bash install.sh
 
 | 输入内容 | 登录方式 |
 | --- | --- |
-| `xiaopacai` | 账号登录 |
-| `user@qq.com` | 邮箱登录 |
+| `demo_user` | 账号登录 |
+| `user@example.com` | 邮箱登录 |
 
 用户不需要手动切换。
 
 ## 手动构建
 
 ```bash
-docker build -t 2fauth-xiaopacai:5.4.3-login .
+docker build -t 2fauth-account-login:5.4.3 .
 ```
 
 ## Docker Compose
