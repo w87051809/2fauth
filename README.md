@@ -120,3 +120,7 @@ deploy/nginx/                                           Nginx 示例
 - token
 - 密码
 - 私钥
+
+## 许可证
+
+本项目按 `AGPL-3.0` 许可证发布。
