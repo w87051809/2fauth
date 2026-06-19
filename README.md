@@ -1,11 +1,19 @@
 # 2FAuth 账号邮箱登录版
 
-基于 `2fauth/2fauth:5.4.3` 定制，主要解决原版登录框只能按邮箱格式输入的问题。  
-本版本支持账号和邮箱同时登录，适合自己部署使用。
+这是基于 `2fauth/2fauth:5.4.3` 的轻量定制版。
+
+本版本只改登录相关逻辑：
+
+- 注册仍然填写：账号、邮箱、密码。
+- 登录可以输入账号。
+- 登录也可以输入邮箱。
+- 输入框会自动显示 `账号登录` 或 `邮箱登录`。
+- 普通账号不会再被浏览器提示必须包含 `@`。
+- 账户列表、验证码管理、导入导出等功能保持原版逻辑。
 
 ## 一键安装
 
-服务器已安装 Docker 的情况下，直接执行：
+服务器已经安装 Docker 的情况下，直接执行：
 
 ```bash
 git clone https://github.com/w87051809/2fauth.git
@@ -39,20 +47,6 @@ APP_URL="http://服务器IP:8002" HOST_PORT=8002 bash install.sh
 | 镜像名 | `2fauth-xiaopacai:5.4.3-login` |
 | 数据目录 | `/DATA/AppData/2fauth` |
 | 宿主机端口 | `8002` |
-
-## 改了什么
-
-- 支持账号登录。
-- 支持邮箱登录。
-- 输入账号时显示 `账号登录`。
-- 输入邮箱时显示 `邮箱登录`。
-- 登录框不再强制邮箱格式。
-- 输入普通账号不会再提示必须包含 `@`。
-- 后端自动判断登录方式，不需要用户手动切换。
-- 注册功能不乱改，仍然是账号、邮箱、密码。
-- 修复 IP 访问时反代替换 JS 导致白屏的问题。
-- 提供 Docker 一键安装脚本。
-- 提供 Docker Compose 和 Nginx / 宝塔反代示例。
 
 ## 登录规则
 
@@ -100,16 +94,15 @@ deploy/nginx/2fauth.example.conf
 http://127.0.0.1:8002
 ```
 
-注意：如果要用 IP 访问，不要对 JavaScript 文件做 `sub_filter`，只处理 HTML。  
-否则前端 JS 可能被替换坏，页面会白屏。
+注意：不要对 JavaScript 文件做 `sub_filter`。只处理 HTML 就行。  
+如果把 JS 文件内容替换坏，登录后可能白屏。
 
 ## 目录说明
 
 ```text
 patches/app/Http/Controllers/Auth/LoginController.php   后端登录判断
 patches/app/Http/Requests/LoginRequest.php              登录校验规则
-patches/public/build/manifest.json                      前端入口映射
-patches/public/build/assets/                            前端登录页补丁
+patches/public/build/assets/Login-5FbYhqqZ.js           登录页输入框补丁
 install.sh                                              一键安装脚本
 Dockerfile                                              镜像构建文件
 docker-compose.yml                                      Compose 示例

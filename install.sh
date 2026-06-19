@@ -51,7 +51,7 @@ MAIL_MAILER=log
 EOF
   echo "已生成 settings.env。"
 else
-  echo "检测到已有 settings.env，已保留。"
+  echo "检测到已有 settings.env，保留原配置。"
 fi
 
 echo "开始构建镜像：$IMAGE_NAME"
@@ -78,5 +78,5 @@ docker run -d \
 
 echo "安装完成。"
 echo "访问地址：$APP_URL"
-echo "容器名：$CONTAINER_NAME"
+echo "容器名称：$CONTAINER_NAME"
 echo "数据目录：$DATA_DIR"
